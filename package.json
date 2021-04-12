@@ -1,0 +1,29 @@
+{
+  "name": "login.dfe.saml-proxy",
+  "version": "0.0.0",
+  "description": "thin wrapper to translate OIDC semantics to SAML semantics",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand --coverage",
+    "dev": "nodemon src/index.js --watch src",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DFE-Digital/login.dfe.saml-proxy.git"
+  },
+  "author": "DfE Login",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DFE-Digital/login.dfe.saml-proxy/issues"
+  },
+  "homepage": "https://github.com/DFE-Digital/login.dfe.saml-proxy#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.2",
+    "lodash": "^4.17.21"
+  }
+}

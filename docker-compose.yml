@@ -1,0 +1,12 @@
+version: "3"
+services:
+  saml-proxy:
+    build:
+      dockerfile: saml-proxy.dockerfile
+      context: .
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+    command: npm run dev
+

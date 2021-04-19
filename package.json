@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest --runInBand --coverage",
     "dev": "nodemon src/index.js --watch src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "start": "node src/index.js"
   },
   "repository": {
@@ -19,11 +21,15 @@
   },
   "homepage": "https://github.com/DFE-Digital/login.dfe.saml-proxy#readme",
   "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3"
   },
   "dependencies": {
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "redis": "^3.1.1"
   }
 }

@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'plugin:jest/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -14,6 +15,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
   },
+  plugins: ['jest'],
   rules: {
   },
 };

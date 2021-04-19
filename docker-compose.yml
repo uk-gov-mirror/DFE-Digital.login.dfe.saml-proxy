@@ -18,7 +18,7 @@ services:
       context: ./saml-client
     env_file: ./saml-client/dev.env
     ports:
-      - 44301:443
+      - 44301:44301
     command: npm run dev
   redis:
     image: redis:6.2.1

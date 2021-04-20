@@ -1,0 +1,61 @@
+name: $(BuildDefinitionName)_tag-$(BuildID)_at-$(Date:yyyyMMdd)$(Rev:.r)
+resources:
+  repositories:
+    - repository: devopsTemplates
+      type: github
+      endpoint: DfE-Digital
+      name: DFE-Digital/operations-devops-pipeline-templates
+    - repository: config
+      type: github
+      endpoint: DfE-Digital
+      name: DFE-Digital/login.dfe.config
+      ref: master
+
+trigger:
+  branches:
+    include:
+    - develop
+    - master
+    - feature/*
+    
+pr:
+  branches:
+    exclude:
+    - develop
+
+variables:
+- group: platform-global
+
+stages:
+
+- stage: build
+  displayName: Build
+  jobs:
+  - job: nodeBuild
+    #displayName: 'Build ${{parameters.applicationName}}'
+    displayName: 'Build SAML Proxy'
+    pool:
+      #vmImage: '${{parameters.agentImage}}'
+      vmImage: ubuntu-latest
+
+    steps:
+    - task: Npm@1
+      displayName: Npm install
+      inputs:
+        command: custom
+        workingDir: $(Build.Repository.LocalPath)
+        verbose: true
+        customCommand: install --force --json --no-package-lock
+        customRegistry: useFeed
+        #customFeed: ${{parameters.customFeedId}}
+        customFeed: '25763a8a-0ad8-43cf-a6a5-c0fcea6b74a7'
+    - task: Npm@1
+      displayName: Npm test
+      inputs:
+        command: custom
+        workingDir: $(Build.Repository.LocalPath)
+        verbose: false
+        customCommand: test --force
+        customRegistry: useFeed
+        customFeed: ${{parameters.customFeedId}}
+        continueOnError: true

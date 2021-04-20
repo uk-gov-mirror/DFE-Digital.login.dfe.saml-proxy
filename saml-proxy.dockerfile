@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14-alpine
 EXPOSE 443
 
 ARG NODE_ENV

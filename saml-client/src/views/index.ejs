@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example SAML Client</title>
+</head>
+<body>
+    <header>
+        <h1>Example SAML Client</h1>
+        <div>
+            <% if (!locals.isLoggedIn) { %>
+            <a href="/Login">Get yourself logged in</a>
+            <% } else { %>
+                <h2>AUTHENTICATED</h2>
+                <ul>
+                    <% for(let i = 0; i < locals.user_assertions.length; i++) {%>
+                        <li><%= locals.user_assertions[i] %></li>
+                    <% } %>
+                </ul>
+                <div>
+                    <a href="/login">Login in again?</a>
+                </div>
+            <% } %>
+        </div>
+    </header>
+</body>
+</html>

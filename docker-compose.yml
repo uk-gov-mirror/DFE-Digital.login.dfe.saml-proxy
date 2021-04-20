@@ -4,9 +4,25 @@ services:
     build:
       dockerfile: saml-proxy.dockerfile
       context: .
+    env_file: ./dev.env
     volumes:
       - ./src:/app/src
       - ./package.json:/app/package.json
       - ./package-lock.json:/app/package-lock.json
+    ports:
+      - 44300:443
     command: npm run dev
-
+  saml-client:
+    build:
+      dockerfile: saml-client.dockerfile
+      context: ./saml-client
+    env_file: ./saml-client/dev.env
+    ports:
+      - 44301:44301
+    command: npm run dev
+  redis:
+    image: redis:6.2.1
+    ports:
+      - 6380:6380
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf

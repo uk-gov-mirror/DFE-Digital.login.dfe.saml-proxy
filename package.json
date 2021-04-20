@@ -2,13 +2,11 @@
   "name": "login.dfe.saml-proxy",
   "version": "0.0.0",
   "description": "thin wrapper to translate OIDC semantics to SAML semantics",
-  "main": "index.js",
   "scripts": {
     "test": "jest --runInBand --coverage",
     "dev": "nodemon src/index.js --watch src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
